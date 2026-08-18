@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Jump Into That Year</title>
+<link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="ch"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.7"/></filter>
+</svg>
+
+<div id="ambient"></div><canvas id="fx"></canvas><div id="lamp"></div><div id="breath"></div><div id="heart"></div>
+<div class="bar" id="barT"></div><div class="bar" id="barB"></div>
+
+<div id="openingBg" aria-hidden="true"><div id="openingConcrete"></div><div id="openingRoom"></div></div>
+
+<div id="memoryAfter" aria-hidden="true"></div>
+<div id="stage"><div id="scenes"></div></div>
+<div id="memoryFilm" aria-hidden="true"></div>
+<div id="archiveTag" class="ui" aria-hidden="true"><span id="archiveText"></span></div>
+
+<div id="clip"><video id="clipv" muted playsinline preload="auto"></video><div class="still" id="clipStill"></div><div class="gr"></div><div class="lbl" id="clipLbl"></div></div>
+<div id="memory" aria-hidden="true"><div class="mf" id="memA"></div><div class="mf" id="memB"></div><div class="mgr"></div><button class="mtake ui" id="memTake" type="button" aria-label="Double-click the watermelon to take it" aria-hidden="true" disabled></button><div class="mlbl" id="memLbl"></div></div>
+<div id="thirdMemory" aria-hidden="true">
+  <div class="tmf" id="thirdA"></div><div class="tmf" id="thirdB"></div>
+  <canvas class="ride-veil" id="rideVeil" aria-hidden="true"></canvas>
+  <div class="tmwash"></div>
+  <div class="ride-winds" aria-hidden="true"><i class="ride-wind"></i><i class="ride-wind"></i><i class="ride-wind"></i></div>
+  <div class="ride-particles" id="rideParticles" aria-hidden="true"></div>
+  <span class="ride-pointer" id="ridePointer" aria-hidden="true"></span>
+  <button class="ride-control ui" id="rideControl" type="button" aria-label="Press and move slowly across the sky to reveal the memory" disabled></button>
+  <div class="tmlbl" id="thirdLbl" role="status" aria-live="polite"></div>
+  <div class="ride-stage" id="rideStage" aria-live="off"></div>
+  <div class="ride-guide" id="rideGuide" role="status" aria-live="polite"><span class="ride-guide-text" id="rideGuideText">Press, then move slowly across the sky.</span></div>
+</div><div id="seventhChoice" aria-hidden="true">
+  <div class="seventh-options" role="group" aria-label="Choose what to do at the seventh square">
+    <button class="seventh-choice-btn" id="memoryChoice" type="button">Go back to the memories</button>
+    <button class="seventh-choice-btn" id="doorChoice" type="button">Walk through the door</button>
+    <div class="seventh-choice-status" id="seventhChoiceStatus" role="status" aria-live="polite"></div>
+  </div>
+</div>
+<div id="memoryLoop" aria-hidden="true">
+  <div class="loop-frame" id="loopA"></div>
+  <div class="loop-frame" id="loopB"></div>
+  <div class="loop-wash"></div>
+  <div class="loop-status" id="loopStatus" role="status" aria-live="polite"></div>
+</div>
+<div id="doorMemory" aria-hidden="true">
+  <div class="door-frame" id="doorFrame"></div>
+  <div class="door-slit" id="doorSlit"></div>
+  <div class="door-vignette"></div>
+  <div class="door-hint" id="doorHint" role="status" aria-live="polite">Hold to push the door open</div>
+  <button class="door-control ui" id="doorControl" type="button" aria-label="Hold to push open the old door"></button>
+</div>
+<div id="gl"><video id="glv" muted playsinline preload="auto"></video></div>
+<div id="veil"></div><div id="flash"></div>
+
+<div id="voice"></div>
+<div id="sys" class="sys-f"><div class="t" id="sysT">ACCESS DENIED</div></div>
+<div id="tip" class="ui" role="status" aria-live="polite" aria-atomic="true"></div>
+<div id="prog"><i id="progI"></i></div>
+
+<div id="map"><div class="mbg" id="mapBg"></div><div class="mvg"></div>
+  <svg id="mapSvg" viewBox="0 0 360 640"></svg>
+  <div class="cap" id="mapCap"></div></div>
+
+<div id="go" class="ui"><span class="lb" id="goLb">Jump to the next square</span><button id="goBtn" aria-label="continue">↓</button></div>
+
+<!-- 序章 -->
+<div id="pro">
+  <div id="proBg"><video id="proVid" muted loop playsinline></video><div id="pb1"></div><div id="pb2"></div><div id="pb3"></div></div>
+  <svg id="proGrid" width="300" height="470" viewBox="0 0 300 470"></svg>
+  <div id="proLines"></div>
+</div>
+<div id="proNext" class="ui">click, or simply wait</div>
+
+<!-- 标题 -->
+<div id="board">
+  <div id="boardVid"></div>
+  <div class="bwrap">
+    <div class="eyebrow ui">I M A G E &nbsp;·&nbsp; M E M O R Y &nbsp;·&nbsp; A N &nbsp; I N T E R A C T I V E &nbsp; E L E G Y</div>
+    <h1 class="title">Jump Into That Year</h1>
+    <p class="subtitle">One square at a time, all the way back.</p>
+    <button class="enter" id="startBtn"><span class="enter-label">Crouch down, trace the lines</span></button>
+    <div class="hint ui">Sound on &nbsp;·&nbsp; Full screen &nbsp;·&nbsp; Take your time</div>
+  </div>
+</div>
+
+<!-- 规则 -->
+<div id="rules">
+  <div class="rbox">
+    <div class="rh ui"><span class="rules-heading-char">H</span><span class="rules-heading-char">O</span><span class="rules-heading-char">P</span><span class="rules-heading-char">S</span><span class="rules-heading-char">C</span><span class="rules-heading-char">O</span><span class="rules-heading-char">T</span><span class="rules-heading-char">C</span><span class="rules-heading-char">H</span><span class="rules-heading-char rules-heading-divider">·</span><strong class="rules-heading-char rules-emphasis">T</strong><strong class="rules-heading-char rules-emphasis">H</strong><strong class="rules-heading-char rules-emphasis">E</strong><strong class="rules-heading-char rules-emphasis">R</strong><strong class="rules-heading-char rules-emphasis">U</strong><strong class="rules-heading-char rules-emphasis">L</strong><strong class="rules-heading-char rules-emphasis">E</strong><strong class="rules-heading-char rules-emphasis">S</strong></div>
+    <div class="rule"><div class="rn">I</div><div class="rt">Land in a square, and you land in a memory.</div></div>
+    <div class="rule"><div class="rn">II</div><div class="rt">Finish the small thing inside it, and the picture comes alive.</div></div>
+    <div class="rule"><div class="rn">III</div><div class="rt">What you finish becomes a piece, and you carry it with you.</div></div>
+    <div class="rule" id="r4"><div class="rn">IV</div><div class="rt" id="r4t">Jump wrong, and you may step back and begin again.</div></div>
+    <div class="rfoot ui" id="rfoot">The fourth rule has been rubbed out.</div>
+    <div class="rgo ui" id="rgo">Click anywhere &nbsp;·&nbsp; stand before the first square</div>
+  </div>
+</div>
+
+<!-- 过场 -->
+<div id="il"><div class="t" id="ilT"></div><div class="g ui">click, or simply wait</div></div>
+
+<!-- 尾声 -->
+<div id="coda">
+  <div class="bg" id="codaBg"></div><div class="vg"></div>
+  <svg id="codaSvg" width="250" height="510" viewBox="0 0 250 510"></svg>
+  <div class="ln" id="codaLn"></div>
+</div>
+
+<!-- 终卡 -->
+<div id="end">
+  <div class="l">I put every piece back.</div>
+  <div class="l">The room still felt empty.</div>
+  <div class="s ui">J U M P &nbsp; I N T O &nbsp; T H A T &nbsp; Y E A R &nbsp;·&nbsp; E N D</div>
+  <button class="ui" id="again">Trace the lines once more</button>
+</div>
+
+<button id="snd" class="ui"><span class="eq"><span></span><span></span><span></span></span><span id="sndL">sound on</span></button>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
